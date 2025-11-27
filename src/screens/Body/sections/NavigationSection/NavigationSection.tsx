@@ -58,59 +58,70 @@ const interactiveFeatures = [
 
 export const NavigationSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col items-start py-12 sm:py-16 lg:py-24 bg-[linear-gradient(130deg,rgba(147,51,234,1)_0%,rgba(219,39,119,1)_50%,rgba(126,34,206,1)_100%)] w-full relative">
-      <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-[32px]" />
-        <div className="absolute top-[1365px] left-[1240px] w-40 h-40 bg-white rounded-full blur-[32px]" />
-        <div className="absolute top-[782px] left-[720px] w-48 h-48 bg-white rounded-full blur-[32px]" />
-      </div>
+    <section className="flex flex-col items-start py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-orange-500 via-purple-600 to-pink-600 w-full relative overflow-hidden">
+      {/* Background avec motifs africains */}
+      <div className="absolute inset-0 african-pattern-bg opacity-10"></div>
+      <div className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-br from-yellow-300/30 to-orange-300/30 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-br from-pink-300/30 to-purple-300/30 rounded-full blur-3xl animate-pulse delay-1000" />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-3xl" />
 
       <div className="w-full flex justify-center px-4 sm:px-8 lg:px-20">
         <div className="flex flex-col max-w-screen-xl w-full items-start px-4 sm:px-8">
-          <header className="w-full pb-8 sm:pb-12 lg:pb-16">
-            <div className="flex flex-col w-full items-start">
-              <div className="flex items-start justify-center w-full pb-4">
-                <Badge className="bg-[#ffffff33] text-white border-0 backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)] px-4 py-2 h-10 rounded-full hover:bg-[#ffffff33]">
-                  <img
-                    className="w-[16.67px] h-6"
-                    alt="Gamification icon"
-                    src="/i-447.svg"
-                  />
-                  <span className="pl-2 [font-family:'Roboto',Helvetica] font-semibold text-sm">
+          <header className="w-full pb-8 sm:pb-12 lg:pb-16 relative z-10">
+            <div className="flex flex-col w-full items-center">
+              <div className="flex items-center justify-center w-full pb-6">
+                <Badge className="bg-gradient-to-r from-yellow-400/30 to-orange-400/30 text-white border-2 border-yellow-300/50 backdrop-blur-md px-6 py-3 rounded-full hover:from-yellow-400/40 hover:to-orange-400/40 transition-all shadow-lg">
+                  <span className="text-2xl mr-2">🎮</span>
+                  <span className="[font-family:'Roboto',Helvetica] font-bold text-base">
                     Gamification
                   </span>
                 </Badge>
               </div>
 
-              <div className="w-full pb-4 sm:pb-6">
-                <h2 className="w-full text-center [font-family:'Roboto',Helvetica] font-bold text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
-                  <span>Apprendre n&#39;a jamais été aussi </span>
-                  <span className="text-[#fddf46]">amusant</span>
+              <div className="w-full pb-6">
+                <h2 className="w-full text-center [font-family:'Roboto',Helvetica] font-bold text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight drop-shadow-lg">
+                  Apprendre n&#39;a jamais été aussi{" "}
+                  <span className="relative inline-block">
+                    <span className="text-yellow-300 drop-shadow-[0_0_20px_rgba(253,224,71,0.5)]">
+                      amusant
+                    </span>
+                    <span className="absolute -bottom-2 left-0 w-full h-1 bg-yellow-300 rounded-full"></span>
+                  </span>
                 </h2>
               </div>
 
-              <div className="w-full flex justify-center px-4 sm:px-8 md:px-16 lg:px-56">
-                <p className="max-w-screen-md text-center [font-family:'Roboto',Helvetica] font-normal text-[#ffffffe6] text-base sm:text-lg lg:text-xl leading-relaxed">
-                  Un système de récompenses motivant qui encourage les enfants à
-                  progresser et à s&#39;améliorer
+              <div className="w-full flex justify-center px-4 sm:px-8 md:px-16 lg:px-32">
+                <p className="max-w-3xl text-center [font-family:'Roboto',Helvetica] font-normal text-white/95 text-lg sm:text-xl lg:text-2xl leading-relaxed">
+                  Un système de{" "}
+                  <strong className="text-yellow-300">
+                    récompenses motivant
+                  </strong>{" "}
+                  qui encourage les enfants à progresser et à s&#39;améliorer
+                  tout en s&#39;amusant
                 </p>
               </div>
             </div>
           </header>
 
-          <div className="w-full pb-8 sm:pb-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 w-full">
+          <div className="w-full pb-8 sm:pb-12 relative z-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 w-full">
               {featureCards.map((card, index) => (
                 <Card
                   key={index}
-                  className="bg-[#ffffff1a] border-[#ffffff33] backdrop-blur-[6px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(6px)_brightness(100%)] rounded-2xl"
+                  className="group bg-white/10 border-2 border-white/20 backdrop-blur-lg hover:bg-white/20 hover:border-yellow-300/50 transition-all duration-300 rounded-2xl hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500/20"
                 >
-                  <CardContent className="p-5 sm:p-6 lg:p-[25px]">
-                    <img className="mb-4" alt={card.title} src={card.icon} />
-                    <h3 className="[font-family:'Roboto',Helvetica] font-bold text-white text-lg sm:text-xl leading-6 sm:leading-7 pb-2">
+                  <CardContent className="p-5 sm:p-6 lg:p-7">
+                    <div className="mb-4 w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                      <img
+                        className="w-10 h-10"
+                        alt={card.title}
+                        src={card.icon}
+                      />
+                    </div>
+                    <h3 className="[font-family:'Roboto',Helvetica] font-bold text-white text-lg sm:text-xl leading-6 sm:leading-7 pb-2 group-hover:text-yellow-300 transition-colors">
                       {card.title}
                     </h3>
-                    <p className="[font-family:'Roboto',Helvetica] font-normal text-[#ffffffcc] text-base leading-6 line-clamp-2">
+                    <p className="[font-family:'Roboto',Helvetica] font-normal text-white/90 text-base leading-6">
                       {card.description}
                     </p>
                   </CardContent>
@@ -118,46 +129,6 @@ export const NavigationSection = (): JSX.Element => {
               ))}
             </div>
           </div>
-
-          <Card className="w-full bg-[#ffffff1a] border-[#ffffff33] backdrop-blur-[6px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(6px)_brightness(100%)] rounded-2xl sm:rounded-3xl">
-            <CardContent className="p-6 sm:p-8 lg:p-[49px]">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center">
-                <div className="flex flex-col">
-                  <h3 className="[font-family:'Roboto',Helvetica] font-bold text-white text-xl sm:text-2xl lg:text-3xl leading-tight sm:leading-9 pb-4 sm:pb-6">
-                    Un monde interactif à explorer
-                  </h3>
-
-                  <div className="flex flex-col space-y-4">
-                    {interactiveFeatures.map((feature, index) => (
-                      <div key={index} className="flex items-start">
-                        <img
-                          className="flex-shrink-0"
-                          alt={feature.title}
-                          src={feature.icon}
-                        />
-                        <div className="pl-3">
-                          <h4 className="[font-family:'Roboto',Helvetica] font-semibold text-white text-base sm:text-lg leading-6 sm:leading-7 pb-1">
-                            {feature.title}
-                          </h4>
-                          <p className="[font-family:'Roboto',Helvetica] font-normal text-[#ffffffcc] text-base leading-6 line-clamp-2">
-                            {feature.description}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-center">
-                  <img
-                    className="rounded-2xl object-cover w-full h-auto"
-                    alt="Interactive world illustration"
-                    src="/img-562.png"
-                  />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </section>
