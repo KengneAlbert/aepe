@@ -1,4 +1,5 @@
 import React from "react";
+import { Users } from "lucide-react";
 import { Badge } from "../../../../components/ui/badge";
 import { Card, CardContent } from "../../../../components/ui/card";
 
@@ -7,7 +8,8 @@ const userProfiles = [
     icon: "/margin-wrap-39.svg",
     title: "Pour les Enfants",
     description: "Un univers ludique et sécurisé pour apprendre en s'amusant",
-    image: "/img-285.png",
+    image:
+      "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&q=80",
     imagePosition: "right",
     features: [
       "Avatar personnalisé et pseudonyme",
@@ -27,7 +29,8 @@ const userProfiles = [
     title: "Pour les Parents",
     description:
       "Suivez et accompagnez la progression de vos enfants en toute sérénité",
-    image: "/img-289.png",
+    image:
+      "https://images.unsplash.com/photo-1475503572774-15a45e5d60b9?w=600&q=80",
     imagePosition: "left",
     features: [
       "Tableau de bord familial complet",
@@ -63,7 +66,7 @@ export const UserProfilesSection = (): JSX.Element => {
           <header className="pb-12 sm:pb-16 lg:pb-20">
             <div className="flex flex-col items-center gap-4 sm:gap-6">
               <Badge className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 via-pink-100 to-orange-100 text-purple-800 hover:bg-purple-100 rounded-full border-2 border-purple-300 shadow-lg">
-                <span className="text-xl">👥</span>
+                <Users className="w-5 h-5" />
                 <span className="font-bold text-base">Pour qui</span>
               </Badge>
               <Badge className="hidden bg-[#dbfbe7] text-[#15803c] hover:bg-[#dbfbe7] px-4 py-2 rounded-full">

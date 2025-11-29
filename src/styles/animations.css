@@ -1,5 +1,21 @@
 /* Animations professionnelles */
 
+/* Animation de fade-in pour le contenu */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
 /* Motifs africains en SVG pattern */
 .african-pattern-bg {
   background-image: repeating-linear-gradient(

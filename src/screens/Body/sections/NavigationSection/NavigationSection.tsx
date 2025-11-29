@@ -1,4 +1,5 @@
 import React from "react";
+import { Gamepad2 } from "lucide-react";
 import { Badge } from "../../../../components/ui/badge";
 import { Card, CardContent } from "../../../../components/ui/card";
 
@@ -59,6 +60,19 @@ const interactiveFeatures = [
 export const NavigationSection = (): JSX.Element => {
   return (
     <section className="flex flex-col items-start py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-orange-500 via-purple-600 to-pink-600 w-full relative overflow-hidden">
+      {/* Background image avec overlay */}
+      <div className="absolute inset-0 opacity-[0.12]">
+        <img
+          src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1920&q=80"
+          alt=""
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            e.currentTarget.style.display = "none";
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/85 via-purple-600/85 to-pink-600/85"></div>
+      </div>
+
       {/* Background avec motifs africains */}
       <div className="absolute inset-0 african-pattern-bg opacity-10"></div>
       <div className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-br from-yellow-300/30 to-orange-300/30 rounded-full blur-3xl animate-pulse" />
@@ -71,7 +85,7 @@ export const NavigationSection = (): JSX.Element => {
             <div className="flex flex-col w-full items-center">
               <div className="flex items-center justify-center w-full pb-6">
                 <Badge className="bg-gradient-to-r from-yellow-400/30 to-orange-400/30 text-white border-2 border-yellow-300/50 backdrop-blur-md px-6 py-3 rounded-full hover:from-yellow-400/40 hover:to-orange-400/40 transition-all shadow-lg">
-                  <span className="text-2xl mr-2">🎮</span>
+                  <Gamepad2 className="w-6 h-6 mr-2" />
                   <span className="[font-family:'Roboto',Helvetica] font-bold text-base">
                     Gamification
                   </span>

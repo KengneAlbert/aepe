@@ -1,4 +1,11 @@
-import { InfoIcon } from "lucide-react";
+import {
+  InfoIcon,
+  Users,
+  Palette,
+  Gamepad2,
+  BarChart3,
+  Sparkles,
+} from "lucide-react";
 import React, { useEffect, useRef } from "react";
 import { Badge } from "../../../../components/ui/badge";
 import { Card, CardContent } from "../../../../components/ui/card";
@@ -10,7 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
 const steps = [
   {
     number: "01",
-    emoji: "👨‍👩‍👧‍👦",
+    icon: Users,
     title: "Créez votre famille",
     description:
       "Inscription en 2 minutes • Ajoutez vos enfants • Choisissez votre plan",
@@ -21,7 +28,7 @@ const steps = [
   },
   {
     number: "02",
-    emoji: "🎨",
+    icon: Palette,
     title: "Personnalisez l'expérience",
     description:
       "Avatar unique • Pseudonyme sécurisé • Préférences d'apprentissage",
@@ -32,7 +39,7 @@ const steps = [
   },
   {
     number: "03",
-    emoji: "🎮",
+    icon: Gamepad2,
     title: "Commencez à apprendre",
     description:
       "Modules adaptés à l'âge • Progression personnalisée • Jeux interactifs",
@@ -43,7 +50,7 @@ const steps = [
   },
   {
     number: "04",
-    emoji: "📊",
+    icon: BarChart3,
     title: "Suivez les progrès",
     description:
       "Tableaux de bord • Rapports détaillés • Badges et récompenses",
@@ -102,6 +109,19 @@ export const HowItWorksSection = (): JSX.Element => {
       id="comment-ca-marche"
       className="w-full py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-yellow-50/50 via-orange-50/30 to-white relative overflow-hidden"
     >
+      {/* Background image avec overlay */}
+      <div className="absolute inset-0 opacity-10">
+        <img
+          src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80"
+          alt=""
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            e.currentTarget.style.display = "none";
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/60 to-white/90"></div>
+      </div>
+
       {/* Background decorative elements avec motifs africains */}
       <div className="absolute inset-0 adinkra-dots opacity-15"></div>
       <div className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-br from-orange-300/30 to-yellow-300/30 rounded-full blur-3xl animate-pulse"></div>
@@ -112,7 +132,7 @@ export const HowItWorksSection = (): JSX.Element => {
         {/* Header amélioré */}
         <div ref={headerRef} className="text-center mb-16">
           <Badge className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-500 via-purple-500 to-pink-500 text-white hover:opacity-90 rounded-full gap-2 mb-6 shadow-lg">
-            <span className="text-xl">✨</span>
+            <Sparkles className="w-5 h-5" />
             <span className="font-bold text-base">Comment ça marche</span>
           </Badge>
 
@@ -174,10 +194,10 @@ export const HowItWorksSection = (): JSX.Element => {
                     </div>
                   </div>
 
-                  {/* Emoji et titre */}
+                  {/* Icône et titre */}
                   <div className="mb-6">
-                    <div className="text-4xl mb-3 text-center">
-                      {step.emoji}
+                    <div className="flex justify-center mb-3">
+                      <step.icon className="w-12 h-12 text-gray-700" />
                     </div>
                     <h3 className="font-bold text-gray-900 text-xl lg:text-2xl text-center leading-tight">
                       {step.title}

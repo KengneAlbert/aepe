@@ -1,4 +1,12 @@
-import { CheckIcon } from "lucide-react";
+import {
+  CheckIcon,
+  Target,
+  CalendarRange,
+  Trophy,
+  Users,
+  ShieldCheck,
+  Coins,
+} from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import { Badge } from "../../../../components/ui/badge";
 import { Button } from "../../../../components/ui/button";
@@ -60,24 +68,24 @@ const pricingPlans = [
 
 const additionalFeatures = [
   {
-    icon: "🎯",
+    icon: Target,
     title: "Adapté à chaque âge",
     description:
       "Contenu spécialement conçu pour les 5-8 ans, 9-12 ans et 13-16 ans",
   },
   {
-    icon: "📅",
+    icon: CalendarRange,
     title: "Rythme trimestriel",
     description:
       "Nouveaux cours chaque trimestre (janvier, avril, juillet, octobre)",
   },
   {
-    icon: "🏆",
+    icon: Trophy,
     title: "Apprentissage certifié",
     description: "Certificats de réussite et badges de progression",
   },
   {
-    icon: "👨‍👩‍👧‍👦",
+    icon: Users,
     title: "Expérience familiale",
     description: "Activités parents-enfants et projets en famille",
   },
@@ -172,6 +180,19 @@ export const PricingSection = (): JSX.Element => {
       id="tarifs"
       className="relative w-full py-12 sm:py-16 lg:py-24 bg-gradient-to-b from-orange-50/50 via-purple-50/50 to-pink-50/50 overflow-hidden"
     >
+      {/* Background image avec overlay */}
+      <div className="absolute inset-0 opacity-[0.06]">
+        <img
+          src="https://images.unsplash.com/photo-1554224311-beee2efdc0c8?w=1920&q=80"
+          alt=""
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            e.currentTarget.style.display = "none";
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/88 via-white/82 to-white/92"></div>
+      </div>
+
       {/* Background avec motifs africains */}
       <div className="absolute inset-0 kente-pattern opacity-20"></div>
       <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-orange-300/20 to-yellow-300/20 rounded-full blur-3xl animate-pulse"></div>
@@ -184,7 +205,7 @@ export const PricingSection = (): JSX.Element => {
               className="flex flex-col items-center gap-4 sm:gap-6 max-w-5xl w-full"
             >
               <Badge className="bg-gradient-to-r from-orange-500 via-purple-500 to-pink-500 text-white hover:opacity-90 px-6 py-3 rounded-full shadow-lg">
-                <span className="text-xl mr-2">💰</span>
+                <Coins className="w-5 h-5 mr-2" />
                 <span className="font-bold text-base">Tarifs</span>
               </Badge>
 
@@ -332,76 +353,25 @@ export const PricingSection = (): JSX.Element => {
                 ref={featuresRef}
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
               >
-                {additionalFeatures.map((feature, index) => (
-                  <div
-                    key={index}
-                    className="text-center p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
-                  >
-                    <div className="text-4xl mb-4">{feature.icon}</div>
-                    <h4 className="[font-family:'Roboto',Helvetica] font-semibold text-[#111726] text-lg mb-2">
-                      {feature.title}
-                    </h4>
-                    <p className="[font-family:'Roboto',Helvetica] font-normal text-[#4a5462] text-sm leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Section garantie et FAQ rapide */}
-            <div className="w-full max-w-4xl mx-auto mt-12 bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="text-center md:text-left">
-                  <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
-                    <div className="text-2xl">🛡️</div>
-                    <h3 className="[font-family:'Roboto',Helvetica] font-bold text-[#111726] text-xl">
-                      Garantie satisfaction
-                    </h3>
-                  </div>
-                  <p className="[font-family:'Roboto',Helvetica] font-normal text-[#4a5462] text-base leading-relaxed mb-4">
-                    Pas satisfait ? Nous remboursons intégralement sous 30 jours
-                    sans condition.
-                  </p>
-                  <div className="flex items-center justify-center md:justify-start gap-4 text-sm text-[#4a5462]">
-                    <div className="flex items-center gap-1">
-                      <CheckIcon className="w-4 h-4 text-green-600" />
-                      <span>Aucun engagement</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <CheckIcon className="w-4 h-4 text-green-600" />
-                      <span>Annulation facile</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="text-center md:text-left">
-                  <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
-                    <div className="text-2xl">💡</div>
-                    <h3 className="[font-family:'Roboto',Helvetica] font-bold text-[#111726] text-xl">
-                      Questions fréquentes
-                    </h3>
-                  </div>
-                  <div className="space-y-3 text-sm">
-                    <div>
-                      <p className="font-semibold text-[#111726] mb-1">
-                        À partir de quel âge ?
-                      </p>
-                      <p className="text-[#4a5462]">
-                        De 5 à 16 ans, avec du contenu adapté à chaque tranche
-                        d'âge
+                {additionalFeatures.map((feature, index) => {
+                  const FeatureIcon = feature.icon;
+                  return (
+                    <div
+                      key={index}
+                      className="text-center p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+                    >
+                      <div className="flex justify-center mb-4">
+                        <FeatureIcon className="w-10 h-10 text-orange-600" />
+                      </div>
+                      <h4 className="[font-family:'Roboto',Helvetica] font-semibold text-[#111726] text-lg mb-2">
+                        {feature.title}
+                      </h4>
+                      <p className="[font-family:'Roboto',Helvetica] font-normal text-[#4a5462] text-sm leading-relaxed">
+                        {feature.description}
                       </p>
                     </div>
-                    <div>
-                      <p className="font-semibold text-[#111726] mb-1">
-                        Combien de temps par semaine ?
-                      </p>
-                      <p className="text-[#4a5462]">
-                        30 minutes à 1h selon l'âge et la motivation de l'enfant
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
             </div>
 

@@ -3,47 +3,66 @@ import gsap from "gsap";
 
 export const LoadingScreen: React.FC = () => {
   const [progress, setProgress] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const circlesRef = useRef<HTMLDivElement>(null);
   const orbsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-        return prev + 2;
-      });
-    }, 30);
+    // Progression non-linéaire pour un effet plus naturel
+    const startTime = Date.now();
+    const duration = 2500; // 2.5 secondes
+
+    const updateProgress = () => {
+      const elapsed = Date.now() - startTime;
+      const rawProgress = Math.min(elapsed / duration, 1);
+
+      // Courbe d'accélération easeOutQuad pour progression naturelle
+      const easedProgress = 1 - Math.pow(1 - rawProgress, 3);
+      setProgress(Math.floor(easedProgress * 100));
+
+      if (rawProgress < 1) {
+        requestAnimationFrame(updateProgress);
+      }
+    };
+
+    requestAnimationFrame(updateProgress);
 
     // Animations GSAP
     const ctx = gsap.context(() => {
-      // Animation du logo avec rotation continue
+      // Animation du logo avec rotation et échelle
       gsap.to(logoRef.current, {
         rotation: 360,
-        duration: 2,
+        duration: 3,
         repeat: -1,
         ease: "linear",
       });
 
-      // Animation des cercles concentriques
-      gsap.to(".loading-circle", {
-        scale: 1.5,
-        opacity: 0,
-        duration: 2,
+      gsap.to(logoRef.current, {
+        scale: 1.05,
+        duration: 1.5,
         repeat: -1,
-        stagger: 0.3,
-        ease: "power2.out",
+        yoyo: true,
+        ease: "sine.inOut",
       });
 
-      // Animation des orbes flottants
+      // Animation des cercles concentriques avec délai
+      gsap.to(".loading-circle", {
+        scale: 1.8,
+        opacity: 0,
+        duration: 2.5,
+        repeat: -1,
+        stagger: 0.4,
+        ease: "power3.out",
+      });
+
+      // Animation des orbes flottants avec variation
       orbsRef.current.forEach((orb, index) => {
         if (orb) {
           gsap.to(orb, {
-            y: -20,
-            duration: 1.5 + index * 0.2,
+            y: -25,
+            scale: 1.2,
+            duration: 1.2 + index * 0.15,
             repeat: -1,
             yoyo: true,
             ease: "sine.inOut",
@@ -53,13 +72,15 @@ export const LoadingScreen: React.FC = () => {
     });
 
     return () => {
-      clearInterval(interval);
       ctx.revert();
     };
   }, []);
 
   return (
-    <div className="fixed inset-0 z-[100] bg-gradient-to-br from-orange-500 via-purple-600 to-pink-600 flex items-center justify-center">
+    <div
+      ref={containerRef}
+      className="fixed inset-0 z-[100] bg-gradient-to-br from-orange-500 via-purple-600 to-pink-600 flex items-center justify-center transition-opacity duration-500"
+    >
       {/* Background avec motifs africains */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 kente-pattern opacity-20"></div>
@@ -98,44 +119,66 @@ export const LoadingScreen: React.FC = () => {
             L'AEFE
           </h1>
           <p className="text-lg sm:text-xl text-white/90 drop-shadow-md font-light tracking-wide">
-            Plateforme d'Éducation Financière
+            Academie d'Éducation Financière pour Enfants
           </p>
         </div>
 
         {/* Barre de progression élégante */}
         <div className="w-80 sm:w-96 space-y-4">
-          <div className="relative h-1.5 bg-white/15 rounded-full overflow-hidden backdrop-blur-sm">
-            {/* Effet de lueur */}
+          <div className="relative h-2 bg-white/20 rounded-full overflow-hidden backdrop-blur-sm shadow-inner">
+            {/* Effet de lueur animée */}
             <div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-pulse"
               style={{
                 width: `${progress}%`,
-                transition: "width 0.3s ease-out",
+                transition: "width 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
               }}
             ></div>
-            {/* Barre principale */}
+            {/* Barre principale avec dégradé dynamique */}
             <div
-              className="absolute inset-0 bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-400 rounded-full shadow-lg"
+              className="absolute inset-0 bg-gradient-to-r from-yellow-300 via-orange-400 to-orange-500 rounded-full shadow-xl"
               style={{
                 width: `${progress}%`,
-                transition: "width 0.3s ease-out",
+                transition: "width 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                boxShadow: "0 0 20px rgba(251, 191, 36, 0.6)",
+              }}
+            ></div>
+            {/* Point lumineux à l'extrémité */}
+            <div
+              className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg"
+              style={{
+                left: `${progress}%`,
+                transition: "left 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                transform: "translateX(-50%) translateY(-50%)",
+                opacity: progress > 0 ? 1 : 0,
               }}
             ></div>
           </div>
-          <div className="flex justify-between items-center text-white/70 text-sm font-medium">
-            <span>Initialisation</span>
-            <span>{progress}%</span>
+          <div className="flex justify-between items-center text-white/80 text-sm font-medium">
+            <span className="tracking-wide">
+              Préparation de votre expérience
+            </span>
+            <span className="text-lg font-bold text-white">{progress}%</span>
           </div>
         </div>
 
-        {/* Orbes flottants minimalistes */}
+        {/* Orbes flottants avec effets de lueur */}
         <div className="flex items-center gap-6 mt-8">
           {[0, 1, 2, 3].map((index) => (
             <div
               key={index}
               ref={(el) => (orbsRef.current[index] = el)}
-              className="w-3 h-3 bg-white/40 rounded-full shadow-lg"
-            ></div>
+              className="relative"
+            >
+              <div
+                className="w-4 h-4 bg-white rounded-full shadow-2xl"
+                style={{
+                  boxShadow:
+                    "0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.4)",
+                }}
+              ></div>
+              <div className="absolute inset-0 w-4 h-4 bg-white/30 rounded-full blur-sm"></div>
+            </div>
           ))}
         </div>
       </div>

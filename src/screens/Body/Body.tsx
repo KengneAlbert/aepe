@@ -11,25 +11,42 @@ import { HowItWorksSection } from "./sections/HowItWorksSection";
 import { NavigationSection } from "./sections/NavigationSection";
 import { PricingSection } from "./sections/PricingSection";
 import { UserProfilesSection } from "./sections/UserProfilesSection";
+import { TestimonialsSection } from "./sections/TestimonialsSection";
+import { TeamSection } from "./sections/TeamSection";
+import { DownloadAppSection } from "./sections/DownloadAppSection";
+import { FounderSection } from "./sections/FounderSection";
 
 export const Body = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
     // Simuler le chargement du contenu
     const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000); // 3 secondes de loading
+      setFadeOut(true);
+      // Attendre la fin de l'animation fade-out avant de retirer le loader
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
+    }, 2500); // 2.5 secondes de loading
 
     return () => clearTimeout(timer);
   }, []);
 
   if (isLoading) {
-    return <LoadingScreen />;
+    return (
+      <div
+        className={`transition-opacity duration-500 ${
+          fadeOut ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <LoadingScreen />
+      </div>
+    );
   }
 
   return (
-    <div className="flex flex-col items-start relative w-full">
+    <div className="flex flex-col items-start relative w-full animate-fadeIn">
       <div className="flex flex-col w-full items-start relative">
         <div className="flex flex-col w-full items-start relative bg-white">
           <Header />
@@ -38,9 +55,13 @@ export const Body = (): JSX.Element => {
             <HeroSection />
             <FeaturesSection />
             <HowItWorksSection />
+            <FounderSection />
+            <TeamSection />
             <UserProfilesSection />
+            <TestimonialsSection />
             <PricingSection />
             <FaqSection />
+            <DownloadAppSection />
             <CallToActionSection />
             <NavigationSection />
             <FooterSection />

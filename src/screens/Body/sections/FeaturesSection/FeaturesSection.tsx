@@ -1,4 +1,13 @@
 import React, { useEffect, useRef } from "react";
+import {
+  Baby,
+  User,
+  UserCircle,
+  Calendar,
+  CalendarDays,
+  GraduationCap,
+  Sparkles,
+} from "lucide-react";
 import { Badge } from "../../../../components/ui/badge";
 import { Card, CardContent } from "../../../../components/ui/card";
 import gsap from "gsap";
@@ -8,7 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ageGroups = [
   {
-    emoji: "🧒",
+    icon: Baby,
     ageRange: "5-8 ans",
     title: "Les Petits Épargnants",
     description: "Découverte ludique de l'argent et de l'épargne",
@@ -23,7 +32,7 @@ const ageGroups = [
     duration: "45 min/session",
   },
   {
-    emoji: "👦",
+    icon: User,
     ageRange: "9-12 ans",
     title: "Les Jeunes Gestionnaires",
     description: "Gestion budgétaire et premiers revenus",
@@ -39,7 +48,7 @@ const ageGroups = [
     duration: "60 min/session",
   },
   {
-    emoji: "🧑",
+    icon: UserCircle,
     ageRange: "13-16 ans",
     title: "Les Futurs Entrepreneurs",
     description: "Investissement et création d'entreprise",
@@ -57,10 +66,14 @@ const ageGroups = [
 ];
 
 const programStats = [
-  { label: "Tranches d'âge", value: "3", icon: "👶" },
-  { label: "Sessions par an", value: "4", icon: "📅" },
-  { label: "Mois de formation", value: "Jan•Avr•Jul•Oct", icon: "🗓️" },
-  { label: "Formateurs experts", value: "12+", icon: "👩‍🏫" },
+  { label: "Tranches d'âge", value: "3", icon: Baby },
+  { label: "Sessions par an", value: "4", icon: Calendar },
+  {
+    label: "Mois de formation",
+    value: "Jan•Avr•Jul•Oct",
+    icon: CalendarDays,
+  },
+  { label: "Formateurs experts", value: "12+", icon: GraduationCap },
 ];
 
 const trimestrialSchedule = [
@@ -198,6 +211,18 @@ export const FeaturesSection = (): JSX.Element => {
       id="fonctionnalites"
       className="w-full py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-white via-orange-50/30 to-purple-50/40 relative overflow-hidden"
     >
+      {/* Background image avec overlay */}
+      <div className="absolute inset-0 opacity-[0.07]">
+        <img
+          src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1920&q=80"
+          alt=""
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            e.currentTarget.style.display = "none";
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/75 to-white/90"></div>
+      </div>
       {/* Background elements avec motifs africains */}
       <div className="absolute inset-0 african-zigzag opacity-20"></div>
       <div className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-br from-orange-300/30 to-yellow-300/30 rounded-full blur-3xl animate-pulse"></div>
@@ -208,7 +233,7 @@ export const FeaturesSection = (): JSX.Element => {
         {/* Header amélioré */}
         <div ref={headerRef} className="text-center mb-16">
           <Badge className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-800 hover:bg-orange-100 rounded-full mb-6 border-2 border-orange-300 shadow-lg">
-            <span className="text-xl">🎓</span>
+            <GraduationCap className="w-5 h-5" />
             <span className="font-bold text-base">Programme Trimestriel</span>
           </Badge>
 
@@ -232,15 +257,18 @@ export const FeaturesSection = (): JSX.Element => {
             ref={statsRef}
             className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-16"
           >
-            {programStats.map((stat, index) => (
-              <div key={index} className="stat-item text-center">
-                <div className="text-2xl mb-2">{stat.icon}</div>
-                <div className="text-2xl lg:text-3xl font-bold text-gray-900 mb-1">
-                  {stat.value}
+            {programStats.map((stat, index) => {
+              const IconComponent = stat.icon;
+              return (
+                <div key={index} className="stat-item text-center">
+                  <IconComponent className="w-8 h-8 mx-auto mb-2 text-orange-600" />
+                  <div className="text-2xl lg:text-3xl font-bold text-gray-900 mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-gray-600">{stat.label}</div>
                 </div>
-                <div className="text-sm text-gray-600">{stat.label}</div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -262,7 +290,7 @@ export const FeaturesSection = (): JSX.Element => {
                     <div
                       className={`w-20 h-20 mx-auto rounded-2xl bg-gradient-to-r ${group.color} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow mb-4`}
                     >
-                      <span className="text-3xl">{group.emoji}</span>
+                      <group.icon className="w-10 h-10 text-white" />
                     </div>
                     <div className="bg-white/80 px-3 py-1 rounded-full shadow-sm mb-2">
                       <span className="text-sm font-bold text-gray-700">
@@ -390,7 +418,7 @@ export const FeaturesSection = (): JSX.Element => {
         {/* Call to action */}
         <div className="text-center bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl p-8 lg:p-12 text-white">
           <div className="w-16 h-16 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center">
-            <span className="text-2xl">🎓</span>
+            <GraduationCap className="w-8 h-8 text-white" />
           </div>
           <h3 className="text-2xl lg:text-3xl font-bold mb-4">
             Prochaine session : Janvier 2025

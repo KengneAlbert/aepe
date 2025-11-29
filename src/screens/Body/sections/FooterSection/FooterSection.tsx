@@ -8,6 +8,8 @@ import {
   Phone,
   MapPin,
   ArrowRight,
+  Coins,
+  Heart,
 } from "lucide-react";
 
 const footerColumns = [
@@ -44,7 +46,7 @@ export const FooterSection = (): JSX.Element => {
               <div className="pb-4">
                 <div className="flex items-center h-12">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-lg">
-                    <span className="text-2xl">💰</span>
+                    <Coins className="w-7 h-7 text-white" />
                   </div>
                   <div className="pl-3">
                     <div className="[font-family:'Pacifico',Helvetica] font-normal text-3xl leading-8 bg-gradient-to-r from-orange-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
@@ -152,7 +154,7 @@ export const FooterSection = (): JSX.Element => {
 
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Développé avec</span>
-              <span className="text-red-500">❤️</span>
+              <Heart className="w-4 h-4 text-red-500" fill="currentColor" />
               <span className="text-sm text-gray-500">par</span>
               <span className="text-sm font-semibold bg-gradient-to-r from-orange-400 to-purple-400 bg-clip-text text-transparent">
                 Readdy

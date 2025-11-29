@@ -1,5 +1,6 @@
 import { Star } from "lucide-react";
 import React, { useEffect, useRef } from "react";
+import { Sparkles } from "lucide-react";
 import { Badge } from "../../../../components/ui/badge";
 import { Button } from "../../../../components/ui/button";
 import FinKids from "../../../../assets/finkids.png";
@@ -165,13 +166,37 @@ export const HeroSection = (): JSX.Element => {
 
           {/* Right side - Visual content */}
           <div ref={imageRef} className="relative lg:block">
-            <div className="relative w-full max-w-lg mx-auto"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-3xl opacity-20 blur-2xl"></div>
-            <img
-              src={FinKids}
-              alt="Illustration programme FinKids"
-              className="relative w-full rounded-3xl shadow-2xl border border-purple-100"
-            />
+            <div className="relative w-full max-w-lg mx-auto">
+              {/* Image de famille réelle */}
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-3xl opacity-20 blur-2xl"></div>
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20">
+                <img
+                  src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=800&q=80"
+                  alt="Famille africaine heureuse apprenant ensemble"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.src = FinKids;
+                  }}
+                />
+                {/* Overlay avec stats */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                  <div className="flex items-center justify-around text-white">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold">15K+</div>
+                      <div className="text-xs">Familles</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold">4.9/5</div>
+                      <div className="text-xs">★★★★★</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold">95%</div>
+                      <div className="text-xs">Satisfaction</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

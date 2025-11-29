@@ -1,4 +1,15 @@
-import { ShieldIcon } from "lucide-react";
+import {
+  ShieldIcon,
+  ShieldCheck,
+  UserRound,
+  Users,
+  Lock,
+  ClipboardList,
+  Scale,
+  Zap,
+  Eye,
+  LockKeyhole,
+} from "lucide-react";
 import React, { useEffect, useRef } from "react";
 import { Badge } from "../../../../components/ui/badge";
 import { Card, CardContent } from "../../../../components/ui/card";
@@ -9,7 +20,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const securityFeatures = [
   {
-    icon: "🛡️",
+    icon: ShieldCheck,
     title: "Environnement 100% fermé",
     description: "Plateforme isolée sans accès aux réseaux sociaux externes",
     highlight: "Aucun risque de contact externe",
@@ -17,7 +28,7 @@ const securityFeatures = [
     bgColor: "from-green-50 to-emerald-50",
   },
   {
-    icon: "🎭",
+    icon: UserRound,
     title: "Identité protégée",
     description: "Pseudonymes obligatoires, aucune donnée personnelle visible",
     highlight: "Anonymat total garanti",
@@ -25,7 +36,7 @@ const securityFeatures = [
     bgColor: "from-blue-50 to-cyan-50",
   },
   {
-    icon: "👨‍👩‍👧‍👦",
+    icon: Users,
     title: "Contrôle parental total",
     description:
       "Permissions complètes : sessions live, micro, caméra, interactions",
@@ -34,7 +45,7 @@ const securityFeatures = [
     bgColor: "from-purple-50 to-violet-50",
   },
   {
-    icon: "🔐",
+    icon: Lock,
     title: "Authentification renforcée",
     description: "Double authentification (2FA) et connexion sécurisée",
     highlight: "Protection maximale des comptes",
@@ -42,7 +53,7 @@ const securityFeatures = [
     bgColor: "from-orange-50 to-amber-50",
   },
   {
-    icon: "📋",
+    icon: ClipboardList,
     title: "Traçabilité complète",
     description: "Logs d'audit de toutes les actions et interactions",
     highlight: "Transparence totale",
@@ -50,7 +61,7 @@ const securityFeatures = [
     bgColor: "from-indigo-50 to-blue-50",
   },
   {
-    icon: "⚖️",
+    icon: Scale,
     title: "Conformité RGPD",
     description:
       "Respect strict des réglementations sur la protection des mineurs",
@@ -61,9 +72,9 @@ const securityFeatures = [
 ];
 
 const trustStats = [
-  { number: "99.9%", label: "Disponibilité", icon: "⚡" },
-  { number: "24/7", label: "Surveillance", icon: "👁️" },
-  { number: "100%", label: "Données protégées", icon: "🔐" },
+  { number: "99.9%", label: "Disponibilité", icon: "Zap" },
+  { number: "24/7", label: "Surveillance", icon: "Eye" },
+  { number: "100%", label: "Données protégées", icon: "LockKeyhole" },
 ];
 
 export const CallToActionSection = (): JSX.Element => {
@@ -126,6 +137,19 @@ export const CallToActionSection = (): JSX.Element => {
 
   return (
     <section className="w-full bg-gradient-to-b from-white via-purple-50/30 to-pink-50/40 py-16 sm:py-20 lg:py-28 relative overflow-hidden">
+      {/* Background image avec overlay */}
+      <div className="absolute inset-0 opacity-8">
+        <img
+          src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1920&q=80"
+          alt=""
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            e.currentTarget.style.display = "none";
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/95"></div>
+      </div>
+
       {/* Background decorative elements avec motifs africains */}
       <div className="absolute inset-0 adinkra-dots opacity-10"></div>
       <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-br from-purple-300/30 to-pink-300/30 rounded-full blur-3xl animate-pulse"></div>
@@ -161,20 +185,30 @@ export const CallToActionSection = (): JSX.Element => {
             ref={statsRef}
             className="grid grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-4"
           >
-            {trustStats.map((stat, index) => (
-              <div
-                key={index}
-                className="text-center p-4 bg-white/90 backdrop-blur-sm rounded-xl shadow-md border border-purple-100 hover:shadow-xl transition-all hover:-translate-y-1"
-              >
-                <div className="text-3xl mb-2">{stat.icon}</div>
-                <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent mb-1">
-                  {stat.number}
+            {trustStats.map((stat, index) => {
+              const IconComponent =
+                stat.icon === "Zap"
+                  ? Zap
+                  : stat.icon === "Eye"
+                  ? Eye
+                  : LockKeyhole;
+              return (
+                <div
+                  key={index}
+                  className="text-center p-4 bg-white/90 backdrop-blur-sm rounded-xl shadow-md border border-purple-100 hover:shadow-xl transition-all hover:-translate-y-1"
+                >
+                  <div className="flex justify-center mb-2">
+                    <IconComponent className="w-8 h-8 text-purple-600" />
+                  </div>
+                  <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent mb-1">
+                    {stat.number}
+                  </div>
+                  <div className="text-sm text-gray-600 font-medium">
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="text-sm text-gray-600 font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -197,7 +231,7 @@ export const CallToActionSection = (): JSX.Element => {
                   <div
                     className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-300`}
                   >
-                    <span className="text-2xl">{feature.icon}</span>
+                    <feature.icon className="w-7 h-7 text-white" />
                   </div>
                   <div
                     className={`bg-gradient-to-r ${feature.bgColor} px-3 py-1.5 rounded-full border border-green-200`}

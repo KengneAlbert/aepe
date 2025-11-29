@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Shield, BookOpen, Settings, DollarSign } from "lucide-react";
 import { Card, CardContent } from "../../../../components/ui/card";
 import { Button } from "../../../../components/ui/button";
 import { ChevronDown, ChevronUp, HelpCircle } from "lucide-react";
@@ -51,10 +52,10 @@ const faqs = [
 ];
 
 const categories = [
-  { name: "Sécurité", icon: "🛡️", count: 3 },
-  { name: "Pédagogie", icon: "📚", count: 2 },
-  { name: "Technique", icon: "⚙️", count: 2 },
-  { name: "Tarification", icon: "💰", count: 1 },
+  { name: "Sécurité", icon: Shield, count: 3 },
+  { name: "Pédagogie", icon: BookOpen, count: 2 },
+  { name: "Technique", icon: Settings, count: 2 },
+  { name: "Tarification", icon: DollarSign, count: 1 },
 ];
 
 export const FaqSection = (): JSX.Element => {
@@ -116,6 +117,19 @@ export const FaqSection = (): JSX.Element => {
       id="faq"
       className="w-full py-16 sm:py-24 px-4 sm:px-8 bg-gradient-to-b from-purple-50/40 via-pink-50/30 to-orange-50/40 relative overflow-hidden"
     >
+      {/* Background image avec overlay */}
+      <div className="absolute inset-0 opacity-[0.05]">
+        <img
+          src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=1920&q=80"
+          alt=""
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            e.currentTarget.style.display = "none";
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/92"></div>
+      </div>
+
       {/* Background decorative elements */}
       <div className="absolute inset-0 adinkra-dots opacity-10"></div>
       <div className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-br from-purple-300/30 to-pink-300/30 rounded-full blur-3xl animate-pulse"></div>
@@ -152,23 +166,26 @@ export const FaqSection = (): JSX.Element => {
           >
             Toutes les questions
           </button>
-          {categories.map((category) => (
-            <button
-              key={category.name}
-              onClick={() => setSelectedCategory(category.name)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
-                selectedCategory === category.name
-                  ? "bg-purple-100 text-purple-700 border border-purple-200"
-                  : "bg-white text-gray-600 border border-gray-200 hover:border-purple-200"
-              }`}
-            >
-              <span>{category.icon}</span>
-              {category.name}
-              <span className="bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full text-xs">
-                {category.count}
-              </span>
-            </button>
-          ))}
+          {categories.map((category) => {
+            const CategoryIcon = category.icon;
+            return (
+              <button
+                key={category.name}
+                onClick={() => setSelectedCategory(category.name)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
+                  selectedCategory === category.name
+                    ? "bg-purple-100 text-purple-700 border border-purple-200"
+                    : "bg-white text-gray-600 border border-gray-200 hover:border-purple-200"
+                }`}
+              >
+                <CategoryIcon className="w-4 h-4" />
+                {category.name}
+                <span className="bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full text-xs">
+                  {category.count}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
         {/* FAQ Items */}
