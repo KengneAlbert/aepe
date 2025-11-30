@@ -79,14 +79,12 @@ export const LoadingScreen: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[100] bg-gradient-to-br from-orange-500 via-purple-600 to-pink-600 flex items-center justify-center transition-opacity duration-500"
+      className="fixed inset-0 z-[100] bg-slate-950 flex items-center justify-center transition-opacity duration-500"
     >
-      {/* Background avec motifs africains */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 kente-pattern opacity-20"></div>
-        <div className="absolute top-20 left-20 w-96 h-96 bg-yellow-400/30 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-pink-400/30 rounded-full blur-3xl animate-pulse delay-700"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full adinkra-dots opacity-15"></div>
+      {/* Background avec motifs subtils */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-500/10 rounded-full blur-[100px] animate-pulse"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-indigo-500/10 rounded-full blur-[100px] animate-pulse delay-700"></div>
       </div>
 
       {/* Content */}
@@ -105,20 +103,18 @@ export const LoadingScreen: React.FC = () => {
             ref={logoRef}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-2xl">
-              <span className="text-5xl font-bold bg-gradient-to-r from-orange-500 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                A
-              </span>
+            <div className="w-24 h-24 bg-white/5 backdrop-blur-md border border-white/10 rounded-full flex items-center justify-center shadow-2xl">
+              <span className="text-5xl font-bold text-white">A</span>
             </div>
           </div>
         </div>
 
         {/* Texte */}
         <div className="text-center space-y-3">
-          <h1 className="text-5xl sm:text-6xl font-bold text-white drop-shadow-2xl tracking-tight">
+          <h1 className="text-5xl sm:text-6xl font-bold text-white drop-shadow-lg tracking-tight">
             L'AEFE
           </h1>
-          <p className="text-lg sm:text-xl text-white/90 drop-shadow-md font-light tracking-wide">
+          <p className="text-lg sm:text-xl text-slate-400 font-light tracking-wide">
             Academie d'Éducation Financière pour Enfants
           </p>
         </div>
@@ -136,11 +132,11 @@ export const LoadingScreen: React.FC = () => {
             ></div>
             {/* Barre principale avec dégradé dynamique */}
             <div
-              className="absolute inset-0 bg-gradient-to-r from-yellow-300 via-orange-400 to-orange-500 rounded-full shadow-xl"
+              className="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full shadow-xl"
               style={{
                 width: `${progress}%`,
                 transition: "width 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
-                boxShadow: "0 0 20px rgba(251, 191, 36, 0.6)",
+                boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)",
               }}
             ></div>
             {/* Point lumineux à l'extrémité */}
@@ -154,7 +150,7 @@ export const LoadingScreen: React.FC = () => {
               }}
             ></div>
           </div>
-          <div className="flex justify-between items-center text-white/80 text-sm font-medium">
+          <div className="flex justify-between items-center text-slate-400 text-sm font-medium">
             <span className="tracking-wide">
               Préparation de votre expérience
             </span>
@@ -171,13 +167,11 @@ export const LoadingScreen: React.FC = () => {
               className="relative"
             >
               <div
-                className="w-4 h-4 bg-white rounded-full shadow-2xl"
+                className="w-3 h-3 bg-blue-400 rounded-full shadow-lg"
                 style={{
-                  boxShadow:
-                    "0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.4)",
+                  boxShadow: "0 0 10px rgba(96, 165, 250, 0.5)",
                 }}
               ></div>
-              <div className="absolute inset-0 w-4 h-4 bg-white/30 rounded-full blur-sm"></div>
             </div>
           ))}
         </div>
