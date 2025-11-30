@@ -1,69 +1,56 @@
 import React from "react";
-import { Gamepad2 } from "lucide-react";
+import {
+  Gamepad2,
+  Trophy,
+  Award,
+  TrendingUp,
+  Star,
+  Gift,
+  Target,
+} from "lucide-react";
 import { Badge } from "../../../../components/ui/badge";
 import { Card, CardContent } from "../../../../components/ui/card";
 
 const featureCards = [
   {
-    icon: "/margin-wrap-67.svg",
+    icon: Trophy,
     title: "Trophées",
     description: "Débloquez des trophées exclusifs en accomplissant des défis",
   },
   {
-    icon: "/margin-wrap-76.svg",
+    icon: Award,
     title: "Badges",
     description: "Collectionnez des badges pour chaque compétence maîtrisée",
   },
   {
-    icon: "/margin-wrap-66.svg",
+    icon: TrendingUp,
     title: "Niveaux",
     description: "Progressez à travers différents niveaux de difficulté",
   },
   {
-    icon: "/margin-wrap-60.svg",
+    icon: Star,
     title: "Points",
     description: "Gagnez des points à chaque activité complétée",
   },
   {
-    icon: "/margin-wrap-71.svg",
+    icon: Gift,
     title: "Récompenses",
     description: "Échangez vos points contre des récompenses virtuelles",
   },
   {
-    icon: "/margin-wrap-69.svg",
+    icon: Target,
     title: "Missions",
     description: "Accomplissez des missions quotidiennes et hebdomadaires",
   },
 ];
 
-const interactiveFeatures = [
-  {
-    icon: "/margin-wrap-72.svg",
-    title: "Carte du monde interactive",
-    description:
-      "Explorez différents continents et pays pour découvrir les concepts financiers",
-  },
-  {
-    icon: "/margin-wrap-75.svg",
-    title: "Mascotte guide",
-    description:
-      "Une mascotte sympathique accompagne les enfants tout au long de leur parcours",
-  },
-  {
-    icon: "/margin-wrap-73.svg",
-    title: "Missions courtes",
-    description:
-      "Des activités de 5 à 15 minutes pour maintenir l'attention et la motivation",
-  },
-];
-
-export const NavigationSection = (): JSX.Element => {
+export const GamificationSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col items-start py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-orange-500 via-purple-600 to-pink-600 w-full relative overflow-hidden">
+    <section className="flex flex-col items-start py-10 sm:py-20 lg:py-32 bg-gradient-to-br from-orange-500 via-purple-600 to-pink-600 w-full relative overflow-hidden">
       {/* Background image avec overlay */}
       <div className="absolute inset-0 opacity-[0.12]">
         <img
-          src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1920&q=80&fm=webp"
           alt=""
           className="w-full h-full object-cover"
           onError={(e) => {
@@ -126,11 +113,7 @@ export const NavigationSection = (): JSX.Element => {
                 >
                   <CardContent className="p-5 sm:p-6 lg:p-7">
                     <div className="mb-4 w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                      <img
-                        className="w-10 h-10"
-                        alt={card.title}
-                        src={card.icon}
-                      />
+                      <card.icon className="w-10 h-10 text-white" />
                     </div>
                     <h3 className="[font-family:'Roboto',Helvetica] font-bold text-white text-lg sm:text-xl leading-6 sm:leading-7 pb-2 group-hover:text-yellow-300 transition-colors">
                       {card.title}

@@ -107,12 +107,12 @@ export const HowItWorksSection = (): JSX.Element => {
   return (
     <section
       id="comment-ca-marche"
-      className="w-full py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-yellow-50/50 via-orange-50/30 to-white relative overflow-hidden"
+      className="w-full py-10 sm:py-20 lg:py-32 bg-gray-50 relative overflow-hidden"
     >
       {/* Background image avec overlay */}
       <div className="absolute inset-0 opacity-10">
         <img
-          src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80&fm=webp"
           alt=""
           className="w-full h-full object-cover"
           onError={(e) => {

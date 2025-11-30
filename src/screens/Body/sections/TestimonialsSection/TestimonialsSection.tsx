@@ -12,7 +12,7 @@ const testimonials = [
     name: "Aminata Diallo",
     role: "Mère de 2 enfants (8 et 12 ans)",
     image:
-      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&q=80",
+      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&q=80&fm=webp",
     rating: 5,
     text: "Mes enfants adorent ! Ils ont appris à gérer leur argent de poche et ont même lancé leur petite entreprise de vente de jus. Je suis fière de voir leur évolution.",
     highlight: "3 mois d'utilisation",
@@ -22,7 +22,7 @@ const testimonials = [
     name: "Jean-Claude Kouassi",
     role: "Père de 3 enfants (6, 10 et 14 ans)",
     image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80&fm=webp",
     rating: 5,
     text: "Une plateforme exceptionnelle ! Mes enfants comprennent maintenant la valeur de l'argent. Le programme trimestriel est parfaitement adapté à leur rythme scolaire.",
     highlight: "6 mois d'utilisation",
@@ -32,7 +32,7 @@ const testimonials = [
     name: "Sophie Mensah",
     role: "Mère de 1 enfant (13 ans)",
     image:
-      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&q=80",
+      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&q=80&fm=webp",
     rating: 5,
     text: "Mon fils de 13 ans a créé un budget pour ses projets et économise pour son premier investissement. L'interface est ludique et les formateurs sont compétents.",
     highlight: "4 mois d'utilisation",
@@ -42,7 +42,7 @@ const testimonials = [
     name: "Ibrahim Ndiaye",
     role: "Père de 2 enfants (7 et 11 ans)",
     image:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80",
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80&fm=webp",
     rating: 5,
     text: "Excellent investissement pour l'avenir de mes enfants. Ils sont plus responsables et posent des questions intelligentes sur l'argent. Le tableau de bord parent est très complet.",
     highlight: "8 mois d'utilisation",
@@ -52,7 +52,7 @@ const testimonials = [
     name: "Marie Adjoua",
     role: "Mère de 3 enfants (5, 9 et 15 ans)",
     image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80",
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80&fm=webp",
     rating: 5,
     text: "Parfait pour toute la famille ! Chaque enfant a du contenu adapté à son âge. Les sessions live sont interactives et mes enfants ne les ratent jamais.",
     highlight: "1 an d'utilisation",
@@ -62,7 +62,7 @@ const testimonials = [
     name: "Kofi Amoah",
     role: "Père de 1 enfant (10 ans)",
     image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&q=80",
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&q=80&fm=webp",
     rating: 5,
     text: "Ma fille a développé un vrai esprit entrepreneurial. Elle a même proposé des idées de business à la maison ! Le programme africain est très valorisant.",
     highlight: "5 mois d'utilisation",
@@ -78,34 +78,42 @@ export const TestimonialsSection = (): JSX.Element => {
     const ctx = gsap.context(() => {
       // Animation du header
       if (headerRef.current) {
-        gsap.from(headerRef.current.children, {
-          y: 50,
-          opacity: 0,
-          duration: 1,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: headerRef.current,
-            start: "top 80%",
-          },
-        });
+        gsap.fromTo(
+          headerRef.current.children,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            stagger: 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: headerRef.current,
+              start: "top 80%",
+            },
+          }
+        );
       }
 
       // Animation des cartes témoignages
       cardsRef.current.forEach((card, index) => {
         if (card) {
-          gsap.from(card, {
-            y: 80,
-            opacity: 0,
-            scale: 0.9,
-            duration: 0.8,
-            delay: index * 0.1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-            },
-          });
+          gsap.fromTo(
+            card,
+            { y: 50, opacity: 0, scale: 0.9 },
+            {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              duration: 0.8,
+              delay: index * 0.1,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+              },
+            }
+          );
         }
       });
     });
@@ -114,11 +122,11 @@ export const TestimonialsSection = (): JSX.Element => {
   }, []);
 
   return (
-    <section className="relative w-full py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-white via-purple-50/30 to-pink-50/30 overflow-hidden">
+    <section className="relative w-full py-10 sm:py-20 lg:py-32 bg-gray-50 overflow-hidden">
       {/* Background image avec overlay */}
       <div className="absolute inset-0 opacity-[0.06]">
         <img
-          src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=1920&q=80&fm=webp"
           alt=""
           className="w-full h-full object-cover"
           onError={(e) => {

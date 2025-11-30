@@ -26,7 +26,7 @@ const featuresData = [
 
 export const MainContentSection = (): JSX.Element => {
   return (
-    <section className="relative flex flex-col items-center w-full py-12 sm:py-16 lg:py-24 px-4 sm:px-8 bg-gradient-to-br from-orange-500 via-purple-600 to-pink-600 overflow-hidden">
+    <section className="relative flex flex-col items-center w-full py-10 sm:py-20 lg:py-32 px-4 sm:px-8 bg-gradient-to-br from-orange-500 via-purple-600 to-pink-600 overflow-hidden">
       {/* Background avec motifs africains */}
       <div className="absolute inset-0 african-pattern-bg opacity-10"></div>
       <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-yellow-300/30 to-orange-300/30 rounded-full blur-[128px] animate-pulse" />

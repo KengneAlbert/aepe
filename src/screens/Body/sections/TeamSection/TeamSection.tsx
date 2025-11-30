@@ -1,54 +1,57 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { GraduationCap, Globe, Briefcase, Heart } from "lucide-react";
 import { Card, CardContent } from "../../../../components/ui/card";
 import { Badge } from "../../../../components/ui/badge";
 import { Linkedin } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Founder from "../../../../assets/stephanie1.jpg";
+import Image1 from "../../../../assets/img1.jpg";
+import Image2 from "../../../../assets/img2.jpg";
+import Image3 from "../../../../assets/img3.jpg";
+import Image4 from "../../../../assets/img4.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const teamMembers = [
   {
-    name: "Dr. Kwame Nkrumah",
+    name: "Stéphanie Mbida",
+    role: "Fondatrice & Formatrice",
+    image: Founder,
+    speciality: "Éducation Financière & Animation",
+    experience: "10+ ans d'expertise",
+    description:
+      "Créatrice de la chaîne 'Parlons de Business', elle anime personnellement des sessions live avec les enfants pour transmettre sa passion de l'entrepreneuriat et bâtir une génération financièrement intelligente en Afrique.",
+    linkedin: "#",
+  },
+  {
+    name: "Dr. Kwame ",
     role: "Directeur Pédagogique",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
-    speciality: "Économie & Entrepreneuriat",
+    image: Image2,
+    speciality: "Ingénierie Pédagogique",
     experience: "15 ans d'expérience",
     description:
-      "PhD en Sciences Économiques, ancien consultant à la Banque Mondiale",
+      "Conçoit des programmes éducatifs adaptés aux réalités culturelles et économiques africaines.",
     linkedin: "#",
   },
   {
     name: "Aissatou Sow",
-    role: "Responsable Programmes Enfants",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
-    speciality: "Pédagogie 5-12 ans",
+    role: "Psychologue de l'Enfant",
+    image: Image4,
+    speciality: "Développement Cognitif",
     experience: "10 ans d'expérience",
     description:
-      "Spécialiste en éducation ludique et développement de l'enfant",
+      "Veille à ce que chaque module soit parfaitement adapté à la maturité émotionnelle de l'enfant.",
     linkedin: "#",
   },
   {
     name: "Omar Diop",
-    role: "Formateur Senior",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
-    speciality: "Finance & Investissement",
+    role: "Expert Gamification",
+    image: Image3,
+    speciality: "Engagement Ludique",
     experience: "12 ans d'expérience",
-    description: "Ex-trader, expert en éducation financière pour adolescents",
-    linkedin: "#",
-  },
-  {
-    name: "Fatou Kamara",
-    role: "Animatrice Sessions Live",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
-    speciality: "Animation & Engagement",
-    experience: "8 ans d'expérience",
-    description: "Experte en communication digitale et animation jeunesse",
+    description:
+      "Transforme les concepts financiers complexes en aventures captivantes et mémorables.",
     linkedin: "#",
   },
 ];
@@ -95,11 +98,11 @@ export const TeamSection = (): JSX.Element => {
   }, []);
 
   return (
-    <section className="relative w-full py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-orange-50/40 via-yellow-50/30 to-white overflow-hidden">
+    <section className="relative w-full py-10 sm:py-20 lg:py-32 bg-gray-50 overflow-hidden">
       {/* Background image avec overlay */}
       <div className="absolute inset-0 opacity-[0.08]">
         <img
-          src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=80&fm=webp"
           alt=""
           className="w-full h-full object-cover"
           onError={(e) => {
@@ -136,75 +139,134 @@ export const TeamSection = (): JSX.Element => {
           </p>
         </div>
 
-        {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {teamMembers.map((member, index) => (
-            <Card
-              key={index}
-              ref={(el) => (cardsRef.current[index] = el)}
-              className="group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl border border-gray-100 bg-white transition-all duration-500 hover:-translate-y-2"
-            >
-              <CardContent className="p-0">
-                {/* Image */}
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    onError={(e) => {
-                      e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(
-                        member.name
-                      )}&size=400&background=random`;
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+        {/* Team Grid - Bento Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 auto-rows-fr">
+          {teamMembers.map((member, index) => {
+            // Bento Grid Logic
+            const isLarge = index === 0;
+            const isWide = index === 1;
 
-                  {/* LinkedIn Icon */}
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg hover:bg-orange-500 hover:text-white"
+            return (
+              <Card
+                key={index}
+                ref={(el) => (cardsRef.current[index] = el)}
+                className={`group overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl border-0 transition-all duration-500 hover:-translate-y-2 flex flex-col ${
+                  isLarge
+                    ? "md:col-span-2 md:row-span-2"
+                    : isWide
+                    ? "md:col-span-2"
+                    : "md:col-span-1"
+                }`}
+              >
+                <CardContent className="p-0 flex flex-col h-full">
+                  {/* Image */}
+                  <div
+                    className={`relative overflow-hidden ${
+                      isLarge ? "h-full min-h-[500px]" : "h-64"
+                    }`}
                   >
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                </div>
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                          member.name
+                        )}&size=400&background=random`;
+                      }}
+                    />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-t ${
+                        isLarge
+                          ? "from-black/90 via-black/40 to-transparent opacity-80"
+                          : "from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40"
+                      } transition-opacity duration-500`}
+                    ></div>
 
-                {/* Content */}
-                <div className="p-6 space-y-3">
-                  <div>
-                    <h3 className="font-bold text-gray-900 text-xl mb-1">
-                      {member.name}
-                    </h3>
-                    <p className="text-orange-600 font-semibold text-sm">
-                      {member.role}
-                    </p>
+                    {/* LinkedIn Icon */}
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-orange-600 transition-all duration-300"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+
+                    {/* Overlay Content for Bento Style */}
+                    <div
+                      className={`absolute bottom-0 left-0 w-full p-6 text-white transform ${
+                        isLarge
+                          ? "translate-y-0"
+                          : "translate-y-2 group-hover:translate-y-0"
+                      } transition-transform duration-500`}
+                    >
+                      <Badge className="bg-orange-500/90 hover:bg-orange-600 border-0 text-white mb-3 backdrop-blur-sm">
+                        {member.role}
+                      </Badge>
+                      <h3
+                        className={`font-bold text-white mb-2 ${
+                          isLarge ? "text-3xl md:text-4xl" : "text-xl"
+                        }`}
+                      >
+                        {member.name}
+                      </h3>
+                      <p className="text-white/80 text-sm line-clamp-2 mb-2">
+                        {member.speciality}
+                      </p>
+
+                      {isLarge && (
+                        <div className="mt-4 max-w-xl">
+                          <p className="text-white/90 text-base md:text-lg leading-relaxed mb-4">
+                            {member.description}
+                          </p>
+                          <div className="flex items-center gap-3">
+                            <Badge
+                              variant="outline"
+                              className="border-white/30 text-white bg-white/10 backdrop-blur-md"
+                            >
+                              {member.experience}
+                            </Badge>
+                            <div className="flex items-center gap-2 text-orange-300 font-medium text-sm">
+                              <span>En savoir plus</span>
+                              <Briefcase className="w-4 h-4" />
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Badge className="bg-orange-100 text-orange-700 hover:bg-orange-100 text-xs px-3 py-1">
-                      {member.speciality}
-                    </Badge>
-                    <p className="text-gray-600 text-xs">{member.experience}</p>
-                  </div>
-
-                  <p className="text-gray-700 text-sm leading-relaxed">
-                    {member.description}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                  {/* Content Details - Hidden for Large Card */}
+                  {!isLarge && (
+                    <div className="p-6 bg-white flex-grow flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center gap-2 mb-4">
+                          <Badge
+                            variant="outline"
+                            className="border-orange-200 text-orange-700 bg-orange-50"
+                          >
+                            {member.experience}
+                          </Badge>
+                        </div>
+                        <p className="text-gray-600 text-sm leading-relaxed">
+                          {member.description}
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
 
         {/* Call to action */}
         <div className="mt-16 text-center">
           <p className="text-gray-600 text-lg mb-6">
-            Rejoignez nos{" "}
-            <strong className="text-orange-600">
-              sessions live interactives
-            </strong>{" "}
-            animées par nos experts
+            Une équipe dédiée pour{" "}
+            <strong className="text-orange-600">accompagner vos enfants</strong>{" "}
+            vers l'autonomie financière
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500">
             <div className="flex items-center gap-2">

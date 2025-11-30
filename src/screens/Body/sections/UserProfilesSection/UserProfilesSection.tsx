@@ -1,15 +1,15 @@
 import React from "react";
-import { Users } from "lucide-react";
+import { Users, Gamepad2, UsersRound } from "lucide-react";
 import { Badge } from "../../../../components/ui/badge";
 import { Card, CardContent } from "../../../../components/ui/card";
 
 const userProfiles = [
   {
-    icon: "/margin-wrap-39.svg",
+    icon: Gamepad2,
     title: "Pour les Enfants",
     description: "Un univers ludique et sécurisé pour apprendre en s'amusant",
     image:
-      "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&q=80",
+      "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&q=80&fm=webp",
     imagePosition: "right",
     features: [
       "Avatar personnalisé et pseudonyme",
@@ -21,16 +21,17 @@ const userProfiles = [
       "Missions quotidiennes amusantes",
       "Apprentissage par le jeu",
     ],
-    highlight: "🎮 Interface 100% ludique",
+    highlightIcon: Gamepad2,
+    highlightText: "Interface 100% ludique",
     color: "from-blue-500 to-cyan-500",
   },
   {
-    icon: "/margin-wrap-48.svg",
+    icon: UsersRound,
     title: "Pour les Parents",
     description:
       "Suivez et accompagnez la progression de vos enfants en toute sérénité",
     image:
-      "https://images.unsplash.com/photo-1475503572774-15a45e5d60b9?w=600&q=80",
+      "https://images.unsplash.com/photo-1475503572774-15a45e5d60b9?w=600&q=80&fm=webp",
     imagePosition: "left",
     features: [
       "Tableau de bord familial complet",
@@ -42,7 +43,8 @@ const userProfiles = [
       "Support client dédié aux parents",
       "Ressources pédagogiques exclusives",
     ],
-    highlight: "👨‍👩‍👧‍👦 Contrôle total",
+    highlightIcon: UsersRound,
+    highlightText: "Contrôle total",
     color: "from-purple-500 to-pink-500",
   },
 ];
@@ -51,7 +53,7 @@ export const UserProfilesSection = (): JSX.Element => {
   return (
     <section
       id="pour-qui"
-      className="relative w-full py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-purple-50/40 via-pink-50/30 to-orange-50/40 overflow-hidden"
+      className="relative w-full py-10 sm:py-20 lg:py-32 bg-white overflow-hidden"
     >
       {/* Background avec motifs africains */}
       <div className="absolute inset-0">
@@ -114,15 +116,12 @@ export const UserProfilesSection = (): JSX.Element => {
                       <div
                         className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${profile.color} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow`}
                       >
-                        <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                          <span className="text-white text-lg font-bold">
-                            {profile.title.includes("Enfants") ? "👶" : "👨‍👩‍👧‍👦"}
-                          </span>
-                        </div>
+                        <profile.icon className="w-8 h-8 text-white" />
                       </div>
                       <div className="text-right">
-                        <span className="inline-flex items-center bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold">
-                          {profile.highlight}
+                        <span className="inline-flex items-center gap-2 bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold">
+                          <profile.highlightIcon className="w-4 h-4" />
+                          {profile.highlightText}
                         </span>
                       </div>
                     </div>

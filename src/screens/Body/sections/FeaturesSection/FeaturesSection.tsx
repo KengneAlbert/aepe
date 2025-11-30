@@ -7,6 +7,11 @@ import {
   CalendarDays,
   GraduationCap,
   Sparkles,
+  Target,
+  Wrench,
+  Sun,
+  BarChart3,
+  CheckCircle2,
 } from "lucide-react";
 import { Badge } from "../../../../components/ui/badge";
 import { Card, CardContent } from "../../../../components/ui/card";
@@ -81,25 +86,25 @@ const trimestrialSchedule = [
     month: "Janvier",
     theme: "Planification & Objectifs",
     color: "bg-blue-100 text-blue-700",
-    icon: "🎯",
+    icon: Target,
   },
   {
     month: "Avril",
     theme: "Mise en Pratique",
     color: "bg-green-100 text-green-700",
-    icon: "🛠️",
+    icon: Wrench,
   },
   {
     month: "Juillet",
     theme: "Projets d'Été",
     color: "bg-orange-100 text-orange-700",
-    icon: "☀️",
+    icon: Sun,
   },
   {
     month: "Octobre",
     theme: "Bilan & Évolution",
     color: "bg-purple-100 text-purple-700",
-    icon: "📊",
+    icon: BarChart3,
   },
 ];
 
@@ -209,12 +214,12 @@ export const FeaturesSection = (): JSX.Element => {
     <section
       ref={sectionRef}
       id="fonctionnalites"
-      className="w-full py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-white via-orange-50/30 to-purple-50/40 relative overflow-hidden"
+      className="w-full py-10 sm:py-20 lg:py-32 bg-white relative overflow-hidden"
     >
       {/* Background image avec overlay */}
       <div className="absolute inset-0 opacity-[0.07]">
         <img
-          src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1920&q=80&fm=webp"
           alt=""
           className="w-full h-full object-cover"
           onError={(e) => {
@@ -381,7 +386,9 @@ export const FeaturesSection = (): JSX.Element => {
                   className={`${session.color} border-0 text-center group transition-all duration-300`}
                 >
                   <CardContent className="p-6">
-                    <div className="text-4xl mb-3">{session.icon}</div>
+                    <div className="flex justify-center mb-3">
+                      <session.icon className="w-10 h-10" />
+                    </div>
                     <h4 className="font-bold text-lg mb-2">{session.month}</h4>
                     <p className="text-sm opacity-80">{session.theme}</p>
                     <div className="mt-4 text-xs opacity-70">
@@ -396,19 +403,19 @@ export const FeaturesSection = (): JSX.Element => {
           <div className="text-center mt-8 pt-6 border-t border-gray-100">
             <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-600">
               <div className="flex items-center gap-2">
-                <span className="text-green-500">✅</span>
+                <CheckCircle2 className="w-5 h-5 text-green-500" />
                 <span>Formateurs qualifiés</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-green-500">✅</span>
+                <CheckCircle2 className="w-5 h-5 text-green-500" />
                 <span>Groupes par âge</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-green-500">✅</span>
+                <CheckCircle2 className="w-5 h-5 text-green-500" />
                 <span>Supports interactifs</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-green-500">✅</span>
+                <CheckCircle2 className="w-5 h-5 text-green-500" />
                 <span>Suivi parental</span>
               </div>
             </div>

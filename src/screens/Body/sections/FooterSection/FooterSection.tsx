@@ -33,7 +33,7 @@ const footerColumns = [
 
 export const FooterSection = (): JSX.Element => {
   return (
-    <footer className="w-full bg-[#111726] relative overflow-hidden pt-16 sm:pt-20 pb-8">
+    <footer className="w-full bg-[#111726] relative overflow-hidden pt-10 sm:pt-16 pb-8">
       {/* Background decorative elements */}
       <div className="absolute inset-0 adinkra-dots opacity-5"></div>
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl"></div>

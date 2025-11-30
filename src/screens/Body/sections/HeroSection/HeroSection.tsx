@@ -4,6 +4,7 @@ import { Sparkles } from "lucide-react";
 import { Badge } from "../../../../components/ui/badge";
 import { Button } from "../../../../components/ui/button";
 import FinKids from "../../../../assets/finkids.png";
+import Familly from "../../../../assets/familly.jpg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -85,7 +86,7 @@ export const HeroSection = (): JSX.Element => {
     <section
       ref={sectionRef}
       id="accueil"
-      className="relative w-full min-h-screen flex items-center justify-center pt-32 sm:pt-36 pb-16 sm:pb-20 px-4 sm:px-8 bg-gradient-to-br from-orange-500 via-purple-600 to-pink-600 overflow-hidden"
+      className="relative w-full min-h-screen flex items-center justify-center pt-24 sm:pt-32 pb-10 sm:pb-20 px-4 sm:px-8 bg-gradient-to-br from-orange-500 via-purple-600 to-pink-600 overflow-hidden"
     >
       {/* Background elements avec motifs africains */}
       <div className="absolute top-0 left-0 w-full h-full">
@@ -171,7 +172,7 @@ export const HeroSection = (): JSX.Element => {
               <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-3xl opacity-20 blur-2xl"></div>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20">
                 <img
-                  src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=800&q=80"
+                  src={Familly}
                   alt="Famille africaine heureuse apprenant ensemble"
                   className="w-full h-full object-cover"
                   onError={(e) => {

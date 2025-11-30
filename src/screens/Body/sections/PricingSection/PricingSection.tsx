@@ -178,12 +178,12 @@ export const PricingSection = (): JSX.Element => {
   return (
     <section
       id="tarifs"
-      className="relative w-full py-12 sm:py-16 lg:py-24 bg-gradient-to-b from-orange-50/50 via-purple-50/50 to-pink-50/50 overflow-hidden"
+      className="relative w-full py-10 sm:py-20 lg:py-32 bg-white overflow-hidden"
     >
       {/* Background image avec overlay */}
       <div className="absolute inset-0 opacity-[0.06]">
         <img
-          src="https://images.unsplash.com/photo-1554224311-beee2efdc0c8?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1554224311-beee2efdc0c8?w=1920&q=80&fm=webp"
           alt=""
           className="w-full h-full object-cover"
           onError={(e) => {

@@ -115,12 +115,12 @@ export const FaqSection = (): JSX.Element => {
   return (
     <section
       id="faq"
-      className="w-full py-16 sm:py-24 px-4 sm:px-8 bg-gradient-to-b from-purple-50/40 via-pink-50/30 to-orange-50/40 relative overflow-hidden"
+      className="w-full py-10 sm:py-20 lg:py-32 px-4 sm:px-8 bg-gray-50 relative overflow-hidden"
     >
       {/* Background image avec overlay */}
       <div className="absolute inset-0 opacity-[0.05]">
         <img
-          src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=1920&q=80&fm=webp"
           alt=""
           className="w-full h-full object-cover"
           onError={(e) => {

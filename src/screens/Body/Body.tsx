@@ -8,7 +8,7 @@ import { FeaturesSection } from "./sections/FeaturesSection";
 import { FooterSection } from "./sections/FooterSection";
 import { HeroSection } from "./sections/HeroSection";
 import { HowItWorksSection } from "./sections/HowItWorksSection";
-import { NavigationSection } from "./sections/NavigationSection";
+import { GamificationSection } from "./sections/GamificationSection";
 import { PricingSection } from "./sections/PricingSection";
 import { UserProfilesSection } from "./sections/UserProfilesSection";
 import { TestimonialsSection } from "./sections/TestimonialsSection";
@@ -46,24 +46,24 @@ export const Body = (): JSX.Element => {
   }
 
   return (
-    <div className="flex flex-col items-start relative w-full animate-fadeIn">
-      <div className="flex flex-col w-full items-start relative">
-        <div className="flex flex-col w-full items-start relative bg-white">
-          <Header />
+    <div className="flex flex-col items-start relative w-full">
+      <Header />
 
+      <div className="flex flex-col w-full items-start relative animate-fadeIn">
+        <div className="flex flex-col w-full items-start relative bg-white">
           <main className="flex flex-col w-full items-start relative">
             <HeroSection />
             <FeaturesSection />
             <HowItWorksSection />
+            <GamificationSection />
             <FounderSection />
-            <TeamSection />
             <UserProfilesSection />
+            <TeamSection />
             <TestimonialsSection />
             <PricingSection />
-            <FaqSection />
             <DownloadAppSection />
             <CallToActionSection />
-            <NavigationSection />
+            <FaqSection />
             <FooterSection />
           </main>
         </div>

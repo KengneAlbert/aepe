@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Badge } from "../../../../components/ui/badge";
 import { Card } from "../../../../components/ui/card";
+import Founder from "../../../../assets/stephanie.jpg";
 import {
   Users,
   GraduationCap,
@@ -106,7 +107,7 @@ export const FounderSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="relative w-full py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-white via-orange-50/20 to-purple-50/30 overflow-hidden">
+    <section className="relative w-full py-10 sm:py-20 lg:py-32 bg-white overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 kente-pattern opacity-[0.03]"></div>
       <div className="absolute top-20 left-10 w-80 h-80 bg-gradient-to-br from-orange-200/20 to-yellow-200/20 rounded-full blur-3xl"></div>
@@ -142,7 +143,7 @@ export const FounderSection = (): JSX.Element => {
             {/* Main image container */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
               <img
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80"
+                src={Founder}
                 alt="Stéphanie Mbida - Fondatrice de L'AEFE"
                 className="w-full h-[500px] object-cover"
                 onError={(e) => {
@@ -250,7 +251,6 @@ export const FounderSection = (): JSX.Element => {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

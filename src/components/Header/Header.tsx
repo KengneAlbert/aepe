@@ -34,16 +34,19 @@ export const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
         isScrolled
           ? "bg-white/95 backdrop-blur-lg shadow-lg py-3 px-4"
           : "bg-transparent py-6 px-4"
       }`}
+      style={{ willChange: "transform" }}
     >
       <nav
         className={`max-w-7xl mx-auto transition-all duration-500 ${
           isScrolled
             ? "px-6 py-3"
+            : isMobileMenuOpen
+            ? "bg-white/15 backdrop-blur-md shadow-lg rounded-2xl px-6 py-4 border border-white/40"
             : "bg-white/10 backdrop-blur-sm shadow-none rounded-full px-8 py-4 border-2 border-white/30"
         }`}
       >
@@ -218,7 +221,11 @@ export const Header: React.FC = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden mt-4 py-4 border-t border-gray-200/20">
+          <div
+            className={`lg:hidden mt-4 py-4 border-t ${
+              isScrolled ? "border-gray-200" : "border-white/30"
+            }`}
+          >
             <div className="flex flex-col space-y-1">
               <button
                 onClick={() => scrollToSection("fonctionnalites")}
@@ -272,7 +279,11 @@ export const Header: React.FC = () => {
               </button>
 
               {/* Mobile Language Selector */}
-              <div className="sm:hidden px-4 pt-3 mt-2 border-t border-gray-200/20">
+              <div
+                className={`sm:hidden px-4 pt-3 mt-2 border-t ${
+                  isScrolled ? "border-gray-200" : "border-white/30"
+                }`}
+              >
                 <button
                   onClick={() => setLanguage(language === "fr" ? "en" : "fr")}
                   className={`flex items-center gap-3 w-full py-2 ${
@@ -287,7 +298,11 @@ export const Header: React.FC = () => {
               </div>
 
               {/* Mobile CTA Buttons */}
-              <div className="flex flex-col gap-2 px-4 pt-3 mt-2 border-t border-gray-200/20">
+              <div
+                className={`flex flex-col gap-2 px-4 pt-3 mt-2 border-t ${
+                  isScrolled ? "border-gray-200" : "border-white/30"
+                }`}
+              >
                 <Button
                   variant="ghost"
                   className="w-full justify-center md:hidden text-gray-700 hover:bg-orange-50"

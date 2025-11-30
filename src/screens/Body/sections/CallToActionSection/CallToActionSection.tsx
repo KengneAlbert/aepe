@@ -71,12 +71,6 @@ const securityFeatures = [
   },
 ];
 
-const trustStats = [
-  { number: "99.9%", label: "Disponibilité", icon: "Zap" },
-  { number: "24/7", label: "Surveillance", icon: "Eye" },
-  { number: "100%", label: "Données protégées", icon: "LockKeyhole" },
-];
-
 export const CallToActionSection = (): JSX.Element => {
   const headerRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
@@ -117,17 +111,21 @@ export const CallToActionSection = (): JSX.Element => {
       // Animation des security cards
       cardsRef.current.forEach((card, index) => {
         if (card) {
-          gsap.from(card, {
-            y: 80,
-            opacity: 0,
-            duration: 0.8,
-            delay: index * 0.1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-            },
-          });
+          gsap.fromTo(
+            card,
+            { y: 50, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              delay: index * 0.1,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+              },
+            }
+          );
         }
       });
     });
@@ -136,11 +134,11 @@ export const CallToActionSection = (): JSX.Element => {
   }, []);
 
   return (
-    <section className="w-full bg-gradient-to-b from-white via-purple-50/30 to-pink-50/40 py-16 sm:py-20 lg:py-28 relative overflow-hidden">
+    <section className="w-full bg-gray-50 py-10 sm:py-20 lg:py-32 relative overflow-hidden">
       {/* Background image avec overlay */}
       <div className="absolute inset-0 opacity-8">
         <img
-          src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1920&q=80&fm=webp"
           alt=""
           className="w-full h-full object-cover"
           onError={(e) => {
@@ -179,37 +177,6 @@ export const CallToActionSection = (): JSX.Element => {
             où vos enfants peuvent apprendre en toute sérénité, sous votre
             surveillance bienveillante.
           </p>
-
-          {/* Trust Stats */}
-          <div
-            ref={statsRef}
-            className="grid grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-4"
-          >
-            {trustStats.map((stat, index) => {
-              const IconComponent =
-                stat.icon === "Zap"
-                  ? Zap
-                  : stat.icon === "Eye"
-                  ? Eye
-                  : LockKeyhole;
-              return (
-                <div
-                  key={index}
-                  className="text-center p-4 bg-white/90 backdrop-blur-sm rounded-xl shadow-md border border-purple-100 hover:shadow-xl transition-all hover:-translate-y-1"
-                >
-                  <div className="flex justify-center mb-2">
-                    <IconComponent className="w-8 h-8 text-purple-600" />
-                  </div>
-                  <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent mb-1">
-                    {stat.number}
-                  </div>
-                  <div className="text-sm text-gray-600 font-medium">
-                    {stat.label}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
         </div>
 
         {/* Security Features avec disposition améliorée */}
