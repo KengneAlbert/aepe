@@ -134,9 +134,9 @@ export const CallToActionSection = (): JSX.Element => {
   }, []);
 
   return (
-    <section className="w-full bg-gray-50 py-10 sm:py-20 lg:py-32 relative overflow-hidden">
+    <section className="w-full bg-slate-950 py-10 sm:py-20 lg:py-32 relative overflow-hidden">
       {/* Background image avec overlay */}
-      <div className="absolute inset-0 opacity-8">
+      <div className="absolute inset-0 opacity-10">
         <img
           src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1920&q=80&fm=webp"
           alt=""
@@ -145,35 +145,35 @@ export const CallToActionSection = (): JSX.Element => {
             e.currentTarget.style.display = "none";
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/95"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/95 via-slate-950/90 to-slate-950/95"></div>
       </div>
 
       {/* Background decorative elements avec motifs africains */}
-      <div className="absolute inset-0 adinkra-dots opacity-10"></div>
-      <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-br from-purple-300/30 to-pink-300/30 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-10 left-10 w-64 h-64 bg-gradient-to-br from-orange-300/30 to-yellow-300/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-br from-pink-300/20 to-purple-300/20 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 adinkra-dots opacity-5"></div>
+      <div className="absolute top-10 right-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-10 left-10 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"></div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         {/* Header amélioré */}
         <div ref={headerRef} className="text-center mb-16">
-          <Badge className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white hover:opacity-90 rounded-full gap-2 mb-6 shadow-lg">
+          <Badge className="inline-flex items-center px-6 py-3 bg-blue-500/10 text-blue-300 border border-blue-500/20 hover:bg-blue-500/20 rounded-full gap-2 mb-6 shadow-lg backdrop-blur-md">
             <ShieldIcon className="w-5 h-5" />
             <span className="font-bold text-base">Sécurité & Protection</span>
           </Badge>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-            <span className="text-gray-900">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white">
+            <span className="text-white">
               La sécurité de vos enfants est notre{" "}
             </span>
-            <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent drop-shadow-sm">
+            <span className="bg-gradient-to-r from-sky-300 via-blue-300 to-indigo-300 bg-clip-text text-transparent drop-shadow-md">
               priorité absolue
             </span>
           </h2>
 
-          <p className="max-w-3xl mx-auto text-lg sm:text-xl text-gray-600 leading-relaxed mb-10">
+          <p className="max-w-3xl mx-auto text-lg sm:text-xl text-slate-300 leading-relaxed mb-10">
             Un environnement{" "}
-            <strong className="text-gray-900">100% sécurisé et contrôlé</strong>{" "}
+            <strong className="text-sky-300">100% sécurisé et contrôlé</strong>{" "}
             où vos enfants peuvent apprendre en toute sérénité, sous votre
             surveillance bienveillante.
           </p>
@@ -185,12 +185,12 @@ export const CallToActionSection = (): JSX.Element => {
             <Card
               ref={(el) => (cardsRef.current[index] = el)}
               key={index}
-              className={`group relative border-2 border-transparent hover:border-green-300 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 bg-white overflow-hidden`}
+              className={`group relative border border-white/10 hover:border-blue-500/50 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 bg-white/5 backdrop-blur-sm overflow-hidden`}
             >
               <CardContent className="p-6 relative">
                 {/* Colored accent bar avec animation */}
                 <div
-                  className={`absolute top-0 left-0 w-full h-2 bg-gradient-to-r ${feature.color} opacity-60 group-hover:opacity-100 group-hover:h-3 transition-all duration-300`}
+                  className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${feature.color} opacity-60 group-hover:opacity-100 group-hover:h-2 transition-all duration-300`}
                 ></div>
 
                 {/* Icon moderne */}
@@ -201,9 +201,9 @@ export const CallToActionSection = (): JSX.Element => {
                     <feature.icon className="w-7 h-7 text-white" />
                   </div>
                   <div
-                    className={`bg-gradient-to-r ${feature.bgColor} px-3 py-1.5 rounded-full border border-green-200`}
+                    className={`bg-white/10 px-3 py-1.5 rounded-full border border-white/10`}
                   >
-                    <span className="text-xs font-bold text-green-700">
+                    <span className="text-xs font-bold text-emerald-400">
                       ✓ Actif
                     </span>
                   </div>
@@ -211,14 +211,14 @@ export const CallToActionSection = (): JSX.Element => {
 
                 {/* Titre et description */}
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2.5 group-hover:text-green-600 transition-colors">
+                  <h3 className="text-lg font-bold text-white mb-2.5 group-hover:text-blue-300 transition-colors">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-3">
+                  <p className="text-slate-400 text-sm leading-relaxed mb-3">
                     {feature.description}
                   </p>
-                  <div className="inline-flex items-center bg-gradient-to-r from-green-50 to-emerald-50 px-3 py-1.5 rounded-full border border-green-200">
-                    <span className="text-xs font-bold text-green-700">
+                  <div className="inline-flex items-center bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
+                    <span className="text-xs font-bold text-blue-300">
                       {feature.highlight}
                     </span>
                   </div>

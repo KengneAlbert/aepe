@@ -15,6 +15,7 @@ import { TestimonialsSection } from "./sections/TestimonialsSection";
 import { TeamSection } from "./sections/TeamSection";
 import { DownloadAppSection } from "./sections/DownloadAppSection";
 import { FounderSection } from "./sections/FounderSection";
+import { MainContentSection } from "./sections/MainContentSection/MainContentSection";
 
 export const Body = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(true);
@@ -64,6 +65,7 @@ export const Body = (): JSX.Element => {
             <DownloadAppSection />
             <CallToActionSection />
             <FaqSection />
+            {/* <MainContentSection /> */}
             <FooterSection />
           </main>
         </div>
